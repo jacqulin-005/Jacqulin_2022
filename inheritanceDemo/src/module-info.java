@@ -5,5 +5,5 @@
  * @author Jacqulin
  *
  */
-module Hackathon {
+module inheritanceDemo {
 }
