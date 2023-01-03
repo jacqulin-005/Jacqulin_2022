@@ -1,31 +1,30 @@
-package sumThemAll;
+package binaryNumberInLinkedList;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.List;
 import java.util.stream.IntStream;
-import static java.util.stream.Collectors.toList;
 
 public class Solution {
     public static void main(String[] args) throws IOException {
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
         //BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(System.getenv("OUTPUT_PATH")));
 
-        int numbersCount = Integer.parseInt(bufferedReader.readLine().trim());
+        SinglyLinkedList binary = new SinglyLinkedList();
 
-        List<Integer> numbers = IntStream.range(0, numbersCount).mapToObj(i -> {
+        int binaryCount = Integer.parseInt(bufferedReader.readLine().trim());
+
+        IntStream.range(0, binaryCount).forEach(i -> {
             try {
-                return bufferedReader.readLine().replaceAll("\\s+$", "");
+                int binaryItem = Integer.parseInt(bufferedReader.readLine().trim());
+
+                binary.insertNode(binaryItem);
             } catch (IOException ex) {
                 throw new RuntimeException(ex);
             }
-        })
-            .map(String::trim)
-            .map(Integer::parseInt)
-            .collect(toList());
+        }); 
 
-        int result = Result.arraySum(numbers);
+        long result = Result.getNumber(binary.head);
         System.out.println(String.valueOf(result));
 
         //bufferedWriter.write(String.valueOf(result));

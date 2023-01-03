@@ -1,4 +1,4 @@
-package sumThemAll;
+package doubleOnMatch;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -12,9 +12,9 @@ public class Solution {
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
         //BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(System.getenv("OUTPUT_PATH")));
 
-        int numbersCount = Integer.parseInt(bufferedReader.readLine().trim());
+        int arrCount = Integer.parseInt(bufferedReader.readLine().trim());
 
-        List<Integer> numbers = IntStream.range(0, numbersCount).mapToObj(i -> {
+        List<Long> arr = IntStream.range(0, arrCount).mapToObj(i -> {
             try {
                 return bufferedReader.readLine().replaceAll("\\s+$", "");
             } catch (IOException ex) {
@@ -22,10 +22,12 @@ public class Solution {
             }
         })
             .map(String::trim)
-            .map(Integer::parseInt)
+            .map(Long::parseLong)
             .collect(toList());
 
-        int result = Result.arraySum(numbers);
+        long b = Long.parseLong(bufferedReader.readLine().trim());
+
+        long result = Result.doubleSize(arr, b);
         System.out.println(String.valueOf(result));
 
         //bufferedWriter.write(String.valueOf(result));

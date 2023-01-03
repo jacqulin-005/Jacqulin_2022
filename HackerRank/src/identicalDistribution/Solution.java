@@ -1,4 +1,4 @@
-package sumThemAll;
+package identicalDistribution;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -12,9 +12,9 @@ public class Solution {
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
         //BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(System.getenv("OUTPUT_PATH")));
 
-        int numbersCount = Integer.parseInt(bufferedReader.readLine().trim());
+        int cardTypesCount = Integer.parseInt(bufferedReader.readLine().trim());
 
-        List<Integer> numbers = IntStream.range(0, numbersCount).mapToObj(i -> {
+        List<Integer> cardTypes = IntStream.range(0, cardTypesCount).mapToObj(i -> {
             try {
                 return bufferedReader.readLine().replaceAll("\\s+$", "");
             } catch (IOException ex) {
@@ -25,7 +25,7 @@ public class Solution {
             .map(Integer::parseInt)
             .collect(toList());
 
-        int result = Result.arraySum(numbers);
+        int result = Result.cardPackets(cardTypes);
         System.out.println(String.valueOf(result));
 
         //bufferedWriter.write(String.valueOf(result));

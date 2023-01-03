@@ -1,4 +1,4 @@
-package sumThemAll;
+package complianceCrawlerDictionary;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -12,20 +12,18 @@ public class Solution {
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
         //BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(System.getenv("OUTPUT_PATH")));
 
-        int numbersCount = Integer.parseInt(bufferedReader.readLine().trim());
+        int loggedMovesCount = Integer.parseInt(bufferedReader.readLine().trim());
 
-        List<Integer> numbers = IntStream.range(0, numbersCount).mapToObj(i -> {
+        List<String> loggedMoves = IntStream.range(0, loggedMovesCount).mapToObj(i -> {
             try {
-                return bufferedReader.readLine().replaceAll("\\s+$", "");
+                return bufferedReader.readLine();
             } catch (IOException ex) {
                 throw new RuntimeException(ex);
             }
         })
-            .map(String::trim)
-            .map(Integer::parseInt)
             .collect(toList());
 
-        int result = Result.arraySum(numbers);
+        int result = Result.minimumSteps(loggedMoves);
         System.out.println(String.valueOf(result));
 
         //bufferedWriter.write(String.valueOf(result));

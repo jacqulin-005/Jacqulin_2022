@@ -1,4 +1,4 @@
-package sumThemAll;
+package funWithAnagrams;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -12,24 +12,25 @@ public class Solution {
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
         //BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(System.getenv("OUTPUT_PATH")));
 
-        int numbersCount = Integer.parseInt(bufferedReader.readLine().trim());
+        int textCount = Integer.parseInt(bufferedReader.readLine().trim());
 
-        List<Integer> numbers = IntStream.range(0, numbersCount).mapToObj(i -> {
+        List<String> text = IntStream.range(0, textCount).mapToObj(i -> {
             try {
-                return bufferedReader.readLine().replaceAll("\\s+$", "");
+                return bufferedReader.readLine();
             } catch (IOException ex) {
                 throw new RuntimeException(ex);
             }
         })
-            .map(String::trim)
-            .map(Integer::parseInt)
             .collect(toList());
 
-        int result = Result.arraySum(numbers);
-        System.out.println(String.valueOf(result));
+        List<String> result = Result.funWithAnagrams(text);
+        System.out.println(result);
 
-        //bufferedWriter.write(String.valueOf(result));
-        //bufferedWriter.newLine();
+        /*bufferedWriter.write(
+            result.stream()
+                .collect(joining("\n"))
+            + "\n"
+        ); */
 
         bufferedReader.close();
         //bufferedWriter.close();

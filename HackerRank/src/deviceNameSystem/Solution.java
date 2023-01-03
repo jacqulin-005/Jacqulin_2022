@@ -1,10 +1,11 @@
-package sumThemAll;
+package deviceNameSystem;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.List;
 import java.util.stream.IntStream;
+import static java.util.stream.Collectors.joining;
 import static java.util.stream.Collectors.toList;
 
 public class Solution {
@@ -12,26 +13,28 @@ public class Solution {
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
         //BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(System.getenv("OUTPUT_PATH")));
 
-        int numbersCount = Integer.parseInt(bufferedReader.readLine().trim());
+        int devicenamesCount = Integer.parseInt(bufferedReader.readLine().trim());
 
-        List<Integer> numbers = IntStream.range(0, numbersCount).mapToObj(i -> {
+        List<String> devicenames = IntStream.range(0, devicenamesCount).mapToObj(i -> {
             try {
-                return bufferedReader.readLine().replaceAll("\\s+$", "");
+                return bufferedReader.readLine();
             } catch (IOException ex) {
                 throw new RuntimeException(ex);
             }
         })
-            .map(String::trim)
-            .map(Integer::parseInt)
             .collect(toList());
 
-        int result = Result.arraySum(numbers);
-        System.out.println(String.valueOf(result));
+        List<String> result = Result.deviceNamesSystem(devicenames);
+        System.out.println(result);
 
-        //bufferedWriter.write(String.valueOf(result));
-        //bufferedWriter.newLine();
+        /*bufferedWriter.write(
+            result.stream()
+                .collect(joining("\n"))
+            + "\n"
+        ); */
 
         bufferedReader.close();
         //bufferedWriter.close();
     }
 }
+
