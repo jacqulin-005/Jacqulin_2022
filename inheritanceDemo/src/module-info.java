@@ -1,9 +1,0 @@
-/**
- * 
- */
-/**
- * @author Jacqulin
- *
- */
-module inheritanceDemo {
-}
